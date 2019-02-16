@@ -1,7 +1,9 @@
+# -*- coding: utf-8 -*-
 import socket
 import re
 import multiprocessing
 import web_frame.pyearth_web_frame
+import sys
 
 
 class WSGIServer(object):
@@ -36,8 +38,6 @@ class WSGIServer(object):
                 file_name = "/demo.html"
 
         if not file_name.endswith(".py"):
-
-            # 请求静态资源
             try:
                 f = open("./static_resource" + file_name, "rb")
             except:
