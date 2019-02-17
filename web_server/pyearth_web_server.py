@@ -3,7 +3,6 @@ import socket
 import re
 import multiprocessing
 import web_frame.pyearth_web_frame
-import sys
 
 
 class WSGIServer(object):
@@ -11,11 +10,11 @@ class WSGIServer(object):
     pyEarth 是一款满足 WSGI 规范的小型 Web 服务器，用于研究 Web 服务器的原理
     """
 
-    def __init__(self):
+    def __init__(self, port):
         self.tcp_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.tcp_server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
-        self.tcp_server_socket.bind(("", 7890))
+        self.tcp_server_socket.bind(("", port))
 
         self.tcp_server_socket.listen(128)
 
@@ -39,7 +38,7 @@ class WSGIServer(object):
 
         if not file_name.endswith(".py"):
             try:
-                f = open("./static_resource" + file_name, "rb")
+                f = open("./web_server/static_resource" + file_name, "rb")
             except:
                 response = "HTTP/1.1 404 NOT FOUND\r\n"
                 response += "\r\n"
@@ -93,12 +92,3 @@ class WSGIServer(object):
             new_socket.close()
 
         self.tcp_server_socket.close()
-
-
-def main():
-    wsgi_server = WSGIServer()
-    wsgi_server.run_server()
-
-
-if __name__ == '__main__':
-    main()

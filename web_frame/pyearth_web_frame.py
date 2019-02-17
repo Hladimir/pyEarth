@@ -2,7 +2,7 @@
 
 
 def index():
-    with open("../web_server/static_resource/demo.html") as f:
+    with open("./web_server/static_resource/demo.html") as f:
         content = f.read()
 
     return content
