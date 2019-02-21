@@ -23,9 +23,9 @@ def index():
     return content
 
 
-@route("/center.html")
+@route("/help.html")
 def center():
-    with open("./web_server/static_resource/center.html") as f:
+    with open("./web_server/static_resource/help.html") as f:
         content = f.read()
 
     return content

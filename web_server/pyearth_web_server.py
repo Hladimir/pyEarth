@@ -7,10 +7,13 @@ import web_frame.pyearth_web_frame
 
 class WSGIServer(object):
     """
-    pyEarth 是一款满足 WSGI 规范的小型 Web 服务器，用于研究 Web 服务器的原理
+    pyEarth 是一款满足 WSGI 规范的小型 TCP Web 服务器，用于研究 Web 服务器的原理
     """
 
     def __init__(self, port):
+        self.status = ''
+        self.headers = ''
+
         self.tcp_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.tcp_server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
