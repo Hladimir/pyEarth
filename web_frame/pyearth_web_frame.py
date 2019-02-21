@@ -15,17 +15,20 @@ def route(url):
     return set_func
 
 
-@route("/index.py")
+@route("/index.html")
 def index():
-    with open("./web_server/static_resource/demo.html") as f:
+    with open("./web_server/static_resource/index.html") as f:
         content = f.read()
 
     return content
 
 
-@route("/login.py")
-def login():
-    return "这是登录页"
+@route("/center.html")
+def center():
+    with open("./web_server/static_resource/center.html") as f:
+        content = f.read()
+
+    return content
 
 
 def application(environ, start_response):

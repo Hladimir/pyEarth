@@ -34,9 +34,9 @@ class WSGIServer(object):
         if ret:
             file_name = ret.group(1)
             if file_name == "/":
-                file_name = "/demo.html"
+                file_name = "/index.html"
 
-        if not file_name.endswith(".py"):
+        if not file_name.endswith(".html"):
             try:
                 f = open("./web_server/static_resource" + file_name, "rb")
             except:
